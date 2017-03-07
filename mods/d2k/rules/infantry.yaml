@@ -44,6 +44,7 @@ engineer:
 		CaptureTypes: building, husk
 		PlayerExperience: 50
 	-AutoTarget:
+	-RevealOnFire:
 	Voiced:
 		VoiceSet: EngineerVoice
 
@@ -78,6 +79,7 @@ trooper:
 thumper:
 	Inherits: ^Infantry
 	-AutoTarget:
+	-RevealOnFire:
 	Buildable:
 		Queue: Infantry
 		BuildPaletteOrder: 60
@@ -152,6 +154,10 @@ fremen:
 		CloakSound: STEALTH1.WAV
 		UncloakSound: STEALTH2.WAV
 		IsPlayerPalette: true
+		RequiresCondition: !cloak-force-disabled
+	GrantConditionOnDamageState@UNCLOAK:
+		Condition: cloak-force-disabled
+		ValidDamageStates: Critical
 	-MustBeDestroyed:
 	Voiced:
 		VoiceSet: FremenVoice
@@ -239,6 +245,7 @@ saboteur:
 		Flashes: 0
 		EnterBehaviour: Suicide
 	-AutoTarget:
+	-RevealOnFire:
 	Cloak:
 		InitialDelay: 85
 		CloakDelay: 85
@@ -246,6 +253,10 @@ saboteur:
 		UncloakSound: STEALTH2.WAV
 		UncloakOn: Attack, Unload, Infiltrate, Demolish, Move, Damage
 		IsPlayerPalette: true
+		RequiresCondition: !cloak-force-disabled
+	GrantConditionOnDamageState@UNCLOAK:
+		Condition: cloak-force-disabled
+		ValidDamageStates: Critical
 	Voiced:
 		VoiceSet: SaboteurVoice
 
@@ -259,3 +270,4 @@ nsfremen:
 	RenderSprites:
 		Image: fremen
 	-Cloak:
+	-GrantConditionOnDamageState@UNCLOAK:
